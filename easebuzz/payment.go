@@ -15,7 +15,7 @@ type EbzAccessKeyResp struct {
 	ErrorDesc string `json:"error_desc"`
 }
 
-const easebuzzURL = "https://testpay.easebuzz.in/payment/initiateLink"
+const EasebuzzURL = "https://pay.easebuzz.in/payment/initiateLink"
 
 func GetEbzAccessKey(key string, salt string, body map[string]string) EbzAccessKeyResp {
 	ebzAccessKeyResp := EbzAccessKeyResp{}
@@ -38,7 +38,7 @@ func GetEbzAccessKey(key string, salt string, body map[string]string) EbzAccessK
 	httpClient := request.NewClient(&request.ClientOptions{Timeout: 30})
 	var opts = &request.RequestOptions{
 		Method:        "POST",
-		URL:           easebuzzURL,
+		URL:           EasebuzzURL,
 		Body:          form.Encode(),
 		Retries:       1,
 		RetryInterval: 1,
