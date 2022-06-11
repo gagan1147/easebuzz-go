@@ -39,8 +39,8 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/CloudStuffTech/go-utils v1.1.10 h1:K9qEcVvG34VJJtxFcJGCEDouJb4FSkzE3KumkqQrVPk=
-github.com/CloudStuffTech/go-utils v1.1.10/go.mod h1:QWJofHhu0XvmVu6hNV0pwzoQtR5aV7gbk4rGoin+zvY=
+github.com/CloudStuffTech/go-utils v1.1.11 h1:adjUr1z27NjxfbWnjl45SkOLBdFwa/86Lfn3eFjWaSU=
+github.com/CloudStuffTech/go-utils v1.1.11/go.mod h1:QWJofHhu0XvmVu6hNV0pwzoQtR5aV7gbk4rGoin+zvY=
 github.com/avct/uasurfer v0.0.0-20191028135549-26b5daa857f1 h1:9h8f71kuF1pqovnn9h7LTHLEjxzyQaj0j1rQq5nsMM4=
 github.com/avct/uasurfer v0.0.0-20191028135549-26b5daa857f1/go.mod h1:noBAuukeYOXa0aXGqxr24tADqkwDO2KRD15FsuaZ5a8=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
