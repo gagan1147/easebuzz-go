@@ -86,3 +86,11 @@ func getField(p *PaymentParams, field string) reflect.Value {
 	r := reflect.ValueOf(p)
 	return reflect.Indirect(r).FieldByName(field)
 }
+
+func (c Client) GetPaymentParams() PaymentParams {
+	return PaymentParams{}
+}
+
+func (c Client) GetURL() string {
+	return EasebuzzURL
+}

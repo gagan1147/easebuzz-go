@@ -99,3 +99,7 @@ func (c Client) CreateVA(params *VaParams) *VA {
 	}
 	return &response.Data.VA
 }
+
+func (c Client) GetVaParams() VaParams {
+	return VaParams{}
+}
