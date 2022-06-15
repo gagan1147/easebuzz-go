@@ -76,7 +76,7 @@ func (c Client) GetVA(vaID string) *Response {
 	return response
 }
 
-func (c Client) CreateVA(params *VaParams) *Response {
+func (c Client) CreateVA(params *VaParams) *VA {
 	authorizationHash := security.Sha512Hash(fmt.Sprintf("%s|%s|%s", c.Key, params.Label, c.Salt))
 	response := Response{}
 	jsonBody, _ := json.Marshal(params)
@@ -91,11 +91,11 @@ func (c Client) CreateVA(params *VaParams) *Response {
 	}
 	resp, err := httpClient.Request(opts)
 	if err != nil {
-		return &response
+		return &response.Data.VA
 	}
 	json.Unmarshal([]byte(resp.Body), &response)
 	if !response.Success {
-		return &response
+		return &response.Data.VA
 	}
-	return &response
+	return &response.Data.VA
 }
