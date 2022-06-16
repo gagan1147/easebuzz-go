@@ -45,7 +45,7 @@ type PaymentParams struct {
 	Surl        string
 }
 
-func (c Client) InitiatePayment(p *PaymentParams) Response {
+func (c Client) InitiatePayment(p *PaymentParams) (Response, error) {
 	response := Response{}
 	easeBuzzPreHash := c.Key + "|"
 	form := url.Values{}
@@ -76,21 +76,13 @@ func (c Client) InitiatePayment(p *PaymentParams) Response {
 	}
 	resp, err := httpClient.Request(opts)
 	if err != nil {
-		return response
+		return response, err
 	}
 	json.Unmarshal([]byte(resp.Body), &response)
-	return response
+	return response, err
 }
 
 func getField(p *PaymentParams, field string) reflect.Value {
 	r := reflect.ValueOf(p)
 	return reflect.Indirect(r).FieldByName(field)
-}
-
-func (c Client) GetPaymentParams() PaymentParams {
-	return PaymentParams{}
-}
-
-func (c Client) GetURL() string {
-	return EasebuzzURL
 }

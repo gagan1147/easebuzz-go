@@ -55,7 +55,7 @@ type VaParams struct {
 	Description string
 }
 
-func (c Client) GetVA(vaID string) *VA {
+func (c Client) GetVA(vaID string) (*VA, error) {
 	response := &Response{}
 	authorizationHash := security.Sha512Hash(fmt.Sprintf("%s|%s|%s", c.Key, vaID, c.Salt))
 	httpClient := request.NewClient(&request.ClientOptions{Timeout: 30})
@@ -70,13 +70,13 @@ func (c Client) GetVA(vaID string) *VA {
 	}
 	resp, err := httpClient.Request(opts)
 	if err != nil {
-		return &response.Data.VA
+		return &response.Data.VA, err
 	}
 	json.Unmarshal([]byte(resp.Body), &response)
-	return &response.Data.VA
+	return &response.Data.VA, err
 }
 
-func (c Client) CreateVA(params *VaParams) *VA {
+func (c Client) CreateVA(params *VaParams) (*VA, error) {
 	authorizationHash := security.Sha512Hash(fmt.Sprintf("%s|%s|%s", c.Key, params.Label, c.Salt))
 	response := Response{}
 	jsonBody, _ := json.Marshal(params)
@@ -91,15 +91,11 @@ func (c Client) CreateVA(params *VaParams) *VA {
 	}
 	resp, err := httpClient.Request(opts)
 	if err != nil {
-		return &response.Data.VA
+		return &response.Data.VA, err
 	}
 	json.Unmarshal([]byte(resp.Body), &response)
 	if !response.Success {
-		return &response.Data.VA
+		return &response.Data.VA, err
 	}
-	return &response.Data.VA
-}
-
-func (c Client) GetVaParams() VaParams {
-	return VaParams{}
+	return &response.Data.VA, err
 }
