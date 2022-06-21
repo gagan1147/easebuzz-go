@@ -39,6 +39,7 @@ type VA struct {
 	NS               map[string]string `json:"notification_settings"`
 	UpiIMG           string            `json:"upi_qrcode_remote_file_location"`
 	UpiPDF           string            `json:"upi_qrcode_scanner_remote_file_location"`
+	BankName         string
 }
 
 type EaseBuzzVA struct {
@@ -57,6 +58,7 @@ type VaParams struct {
 
 func (c Client) GetVA(vaID string) (*VA, error) {
 	response := &Response{}
+	response.Data.VA.BankName = "Yes Bank Ltd"
 	authorizationHash := security.Sha512Hash(fmt.Sprintf("%s|%s|%s", c.Key, vaID, c.Salt))
 	httpClient := request.NewClient(&request.ClientOptions{Timeout: 30})
 	var opts = &request.RequestOptions{

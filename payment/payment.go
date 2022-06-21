@@ -45,6 +45,35 @@ type PaymentParams struct {
 	Surl        string
 }
 
+type TransactionWebhookReponse struct {
+	Txnid          string `json:"txnid"`
+	Firstname      string `json:"firstname"`
+	Email          string `json:"email"`
+	Phone          string `json:"phone"`
+	Key            string `json:"key"`
+	Mode           string `json:"mode"`
+	Status         string `json:"status"`
+	CardCategory   string `json:"cardCategory"`
+	Addedon        string `json:"addedon"`
+	PaymentSource  string `json:"payment_source"`
+	PgType         string `json:"pg_type"`
+	BankRefNum     string `json:"bank_ref_num"`
+	Bankcode       string `json:"bankcode"`
+	Error          string `json:"error"`
+	NameOnCard     string `json:"name_on_card"`
+	Cardnum        string `json:"cardnum"`
+	CardType       string `json:"card_type"`
+	Easepayid      string `json:"easepayid"`
+	Amount         string `json:"amount"`
+	NetAmountDebit string `json:"net_amount_debit"`
+	Productinfo    string `json:"productinfo"`
+	Udf1           string `json:"udf1"`
+	Hash           string `json:"hash"`
+	Surl           string `json:"surl"`
+	Furl           string `json:"furl"`
+	ErrorMsg       string `json:"error_Message"`
+}
+
 func (c Client) InitiatePayment(p *PaymentParams) (Response, error) {
 	response := Response{}
 	easeBuzzPreHash := c.Key + "|"
