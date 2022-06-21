@@ -11,11 +11,13 @@ import (
 
 const URL = "https://wire.easebuzz.in/api/v1/insta-collect/virtual_accounts/"
 
+// Client structs holds the Virtual Account Client
 type Client struct {
 	Key  string
 	Salt string
 }
 
+// VA(Virtual Account) struct holds information regarding the virtual account
 type VA struct {
 	ID               string            `json:"id"`
 	AR               []string          `json:"authorized_remitters"`
@@ -46,16 +48,19 @@ type EaseBuzzVA struct {
 	VA VA `json:"virtual_account"`
 }
 
+// Response structs the reponse got from easebuzz api call for VA
 type Response struct {
 	Success bool       `json:"success"`
 	Data    EaseBuzzVA `json:"data"`
 }
 
+// VaParams structs holds the request paramters required for creating new virtual account
 type VaParams struct {
 	Label       string
 	Description string
 }
 
+// GetVA function will return the pointer to the VA structs which holds the virtaul account information
 func (c Client) GetVA(vaID string) (*VA, error) {
 	response := &Response{}
 	response.Data.VA.BankName = "Yes Bank Ltd"
@@ -78,6 +83,7 @@ func (c Client) GetVA(vaID string) (*VA, error) {
 	return &response.Data.VA, err
 }
 
+// CreateVA function will create virtual account on easebuzz and return the pointer to the VA structs which holds the virtaul account information
 func (c Client) CreateVA(params *VaParams) (*VA, error) {
 	authorizationHash := security.Sha512Hash(fmt.Sprintf("%s|%s|%s", c.Key, params.Label, c.Salt))
 	response := Response{}

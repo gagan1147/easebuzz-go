@@ -13,17 +13,20 @@ import (
 
 const EasebuzzURL = "https://pay.easebuzz.in/payment/initiateLink"
 
+// Client structs holds the Payment Client
 type Client struct {
 	Key  string
 	Salt string
 }
 
+// Reponse structs holds the reponse got from easebuzz payment initiate api
 type Response struct {
 	Status    int    `json:"status"`
 	Data      string `json:"data"`
 	ErrorDesc string `json:"error_desc"`
 }
 
+// PaymentParams structs is request parameter required for initiating the payment request
 type PaymentParams struct {
 	Txnid       string
 	Amount      string
@@ -45,6 +48,7 @@ type PaymentParams struct {
 	Surl        string
 }
 
+// TransactionWebhookReponse structs is webhook response which will get api call from easebuzz server to our server for every transaction status update
 type TransactionWebhookReponse struct {
 	Txnid          string `json:"txnid"`
 	Firstname      string `json:"firstname"`
@@ -74,6 +78,7 @@ type TransactionWebhookReponse struct {
 	ErrorMsg       string `json:"error_Message"`
 }
 
+// InitiatePayment function helps in generating access_key which is used for payment purpose
 func (c Client) InitiatePayment(p *PaymentParams) (Response, error) {
 	response := Response{}
 	easeBuzzPreHash := c.Key + "|"
