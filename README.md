@@ -4,7 +4,9 @@ This is Unofficial Easebuzz Go client library.
 
 # Installation
 
+``` sh
 go get -u https://github.com/gagan1147/easebuzz-go/
+```
 
 # Usage
 
