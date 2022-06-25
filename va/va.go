@@ -52,12 +52,14 @@ type EaseBuzzVA struct {
 type Response struct {
 	Success bool       `json:"success"`
 	Data    EaseBuzzVA `json:"data"`
+	Message string     `json:"message"`
 }
 
 // VaParams structs holds the request paramters required for creating new virtual account
 type VaParams struct {
-	Label       string
-	Description string
+	Key         string `json:"key"`
+	Label       string `json:"label"`
+	Description string `json:"description"`
 }
 
 // GetVA function will return the pointer to the VA structs which holds the virtaul account information
@@ -103,6 +105,7 @@ func (c Client) CreateVA(params *VaParams) (*VA, error) {
 	}
 	json.Unmarshal([]byte(resp.Body), &response)
 	if !response.Success {
+		err = fmt.Errorf("%v\n", response.Message)
 		return &response.Data.VA, err
 	}
 	return &response.Data.VA, err
