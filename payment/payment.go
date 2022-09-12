@@ -76,6 +76,7 @@ type TransactionWebhookReponse struct {
 	Surl           string `json:"surl"`
 	Furl           string `json:"furl"`
 	ErrorMsg       string `json:"error_Message"`
+	MerchantLogo   string `json:"merchant_logo"`
 }
 
 // InitiatePayment function helps in generating access_key which is used for payment purpose
