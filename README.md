@@ -1,6 +1,6 @@
 # GO Easebuzz
 
-This is Unofficial Easebuzz Go client library.
+This is an Unofficial Easebuzz Go client library.
 
 # Installation
 
